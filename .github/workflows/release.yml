@@ -71,7 +71,7 @@ jobs:
         run: npm pack --dry-run --ignore-scripts
 
       - name: Publish public package to npm
-        run: npm publish --access public --provenance --ignore-scripts
+        run: npm publish --access public --tag latest --provenance --ignore-scripts
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
