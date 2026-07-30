@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env
+.env.*
+*.log
+*.tgz
+*.key
+*.pfx
+*.p12
+*.pem
+*.cer
+*.crt
+.npmrc
+*.local
+*.local.*

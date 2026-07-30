@@ -1,0 +1,59 @@
+{
+  "name": "@bedolla/enriazure",
+  "version": "0.1.0",
+  "description": "Azure DevOps Server-only MCP with multi-collection administration and guarded CRUD.",
+  "author": "Bedolla",
+  "license": "AGPL-3.0-or-later",
+  "homepage": "https://github.com/Bedolla/EnriAzure#readme",
+  "bugs": {
+    "url": "https://github.com/Bedolla/EnriAzure/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bedolla/EnriAzure.git"
+  },
+  "type": "module",
+  "bin": {
+    "enriazure": "dist/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "npm run clean && tsc -p tsconfig.build.json && node -e \"require('node:fs').chmodSync('dist/index.js',0o755)\"",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "test": "vitest run"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "24.13.3",
+    "eslint": "10.8.0",
+    "jiti": "2.7.0",
+    "prettier": "3.9.6",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.65.0",
+    "vitest": "4.1.10"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "azure-devops-server",
+    "on-premises",
+    "self-hosted"
+  ]
+}
