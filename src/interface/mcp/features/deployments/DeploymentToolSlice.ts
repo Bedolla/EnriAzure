@@ -1,4 +1,4 @@
-import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import type { McpServer } from "@modelcontextprotocol/server";
 import { RestOperationExecutor } from "../../../../application/services/RestOperationExecutor.js";
 import { RequestScope } from "../../../../application/services/RequestScope.js";
 import { CatalogRestToolSlice, RestOperationDefinition } from "../../CatalogRestToolSlice.js";

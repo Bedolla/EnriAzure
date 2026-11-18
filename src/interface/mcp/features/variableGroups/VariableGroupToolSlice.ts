@@ -1,5 +1,4 @@
-import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import type { McpServer, CallToolResult } from "@modelcontextprotocol/server";
 import { z } from "zod";
 import type { AzureDevOpsResponse } from "../../../../application/ports/AzureDevOpsGateway.js";
 import {
@@ -157,6 +156,7 @@ export class VariableGroupToolSlice extends AbstractRestToolSlice implements Mcp
 
   /** @inheritdoc */
   public register(server: McpServer): void {
+    /* @mcp-codemod-error Could not verify `inputSchema` is a schema object. Raw shapes are deprecated in v2 — pass a Standard Schema object (e.g. z.object({ … })); no change is needed if it already is one. */
     server.registerTool(
       "variable_group",
       {
@@ -168,6 +168,7 @@ export class VariableGroupToolSlice extends AbstractRestToolSlice implements Mcp
       },
       async (args: VariableGroupReadArguments): Promise<CallToolResult> => this.handleRead(args),
     );
+    /* @mcp-codemod-error Could not verify `inputSchema` is a schema object. Raw shapes are deprecated in v2 — pass a Standard Schema object (e.g. z.object({ … })); no change is needed if it already is one. */
     server.registerTool(
       "variable_group_write",
       {

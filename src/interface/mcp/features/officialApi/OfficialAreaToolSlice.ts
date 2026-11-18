@@ -1,5 +1,4 @@
-import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import type { McpServer, CallToolResult } from "@modelcontextprotocol/server";
 import { z } from "zod";
 import type {
   OfficialApiCatalog,
@@ -77,6 +76,7 @@ export class OfficialAreaToolSlice implements McpToolSlice {
 
     if (reads.length > 0) {
       const readKeys = reads.map((operation): string => operation.key);
+      /* @mcp-codemod-error Could not verify `inputSchema` is a schema object. Raw shapes are deprecated in v2 — pass a Standard Schema object (e.g. z.object({ … })); no change is needed if it already is one. */
       server.registerTool(
         baseName,
         {
@@ -99,6 +99,7 @@ export class OfficialAreaToolSlice implements McpToolSlice {
       const includesDelete: boolean = writes.some(
         (operation): boolean => operation.risk === "destructive",
       );
+      /* @mcp-codemod-error Could not verify `inputSchema` is a schema object. Raw shapes are deprecated in v2 — pass a Standard Schema object (e.g. z.object({ … })); no change is needed if it already is one. */
       server.registerTool(
         `${baseName}_write`,
         {

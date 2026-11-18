@@ -1,5 +1,4 @@
-import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import type { McpServer, CallToolResult } from "@modelcontextprotocol/server";
 import { z } from "zod";
 import type {
   OfficialApiCatalog,
@@ -189,6 +188,7 @@ export class OfficialApiToolSlice implements McpToolSlice {
 
   /** @inheritdoc */
   public register(server: McpServer): void {
+    /* @mcp-codemod-error Could not verify `inputSchema` is a schema object. Raw shapes are deprecated in v2 — pass a Standard Schema object (e.g. z.object({ … })); no change is needed if it already is one. */
     server.registerTool(
       "official_api_catalog",
       {
@@ -200,6 +200,7 @@ export class OfficialApiToolSlice implements McpToolSlice {
       },
       (args: CatalogArguments): CallToolResult => this.handleCatalog(args),
     );
+    /* @mcp-codemod-error Could not verify `inputSchema` is a schema object. Raw shapes are deprecated in v2 — pass a Standard Schema object (e.g. z.object({ … })); no change is needed if it already is one. */
     server.registerTool(
       "official_api",
       {
@@ -212,6 +213,7 @@ export class OfficialApiToolSlice implements McpToolSlice {
       async (args: OfficialApiExecutionArguments): Promise<CallToolResult> =>
         this.handleExecution(args, "read"),
     );
+    /* @mcp-codemod-error Could not verify `inputSchema` is a schema object. Raw shapes are deprecated in v2 — pass a Standard Schema object (e.g. z.object({ … })); no change is needed if it already is one. */
     server.registerTool(
       "official_api_write",
       {

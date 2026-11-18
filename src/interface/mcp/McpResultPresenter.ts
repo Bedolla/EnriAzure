@@ -1,5 +1,5 @@
 import { randomBytes } from "node:crypto";
-import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import type { CallToolResult } from "@modelcontextprotocol/server";
 import type { AzureDevOpsResponse } from "../../application/ports/AzureDevOpsGateway.js";
 import { SecretRedactor } from "../../application/services/SecretRedactor.js";
 

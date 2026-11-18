@@ -1,5 +1,4 @@
-import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type { CallToolResult, ToolAnnotations } from "@modelcontextprotocol/sdk/types.js";
+import type { McpServer, CallToolResult, ToolAnnotations } from "@modelcontextprotocol/server";
 import type { ZodType } from "zod";
 import type { AzureDevOpsRequest } from "../../application/ports/AzureDevOpsGateway.js";
 import { RestOperationExecutor } from "../../application/services/RestOperationExecutor.js";
@@ -139,6 +138,7 @@ export class CatalogRestToolSlice<TArguments extends ActionArguments>
    * @param server - MCP server.
    */
   public register(server: McpServer): void {
+    /* @mcp-codemod-error Could not verify `inputSchema` is a schema object. Raw shapes are deprecated in v2 — pass a Standard Schema object (e.g. z.object({ … })); no change is needed if it already is one. */
     server.registerTool(
       this.options.name,
       {

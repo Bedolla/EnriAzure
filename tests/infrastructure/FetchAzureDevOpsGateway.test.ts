@@ -16,21 +16,19 @@ describe("FetchAzureDevOpsGateway", (): void => {
   });
 
   it("sends Basic PAT auth to the configured server and parses continuation data", async (): Promise<void> => {
-    const fetchMock = vi.fn(
-      (input: string | URL | Request, init?: RequestInit): Promise<Response> => {
-        void input;
-        void init;
-        return Promise.resolve(
-          new Response(JSON.stringify({ count: 1, value: [{ name: "Enri" }] }), {
-            status: 200,
-            headers: {
-              "content-type": "application/json",
-              "x-ms-continuationtoken": "next-page",
-            },
-          }),
-        );
-      },
-    );
+    const fetchMock = vi.fn<
+      (input: string | URL | Request, init?: RequestInit) => Promise<Response>
+    >((): Promise<Response> => {
+      return Promise.resolve(
+        new Response(JSON.stringify({ count: 1, value: [{ name: "Enri" }] }), {
+          status: 200,
+          headers: {
+            "content-type": "application/json",
+            "x-ms-continuationtoken": "next-page",
+          },
+        }),
+      );
+    });
     vi.stubGlobal("fetch", fetchMock);
     const gateway = new FetchAzureDevOpsGateway(
       new OnPremisesServerUrl("https://ado.example.test/tfs"),

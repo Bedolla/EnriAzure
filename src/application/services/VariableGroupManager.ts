@@ -178,8 +178,11 @@ export class VariableGroupManager {
     if (!Object.hasOwn(variables, command.variableName)) {
       throw new Error(`La variable '${command.variableName}' no existe en el grupo seleccionado.`);
     }
-    const { [command.variableName]: removedVariable, ...remainingVariables } = variables;
-    void removedVariable;
+    const remainingVariables: Record<string, unknown> = Object.fromEntries(
+      Object.entries(variables).filter(
+        ([name]: [string, unknown]): boolean => name !== command.variableName,
+      ),
+    );
     const body: Record<string, unknown> = await this.buildUpdateBody(
       current,
       command,
