@@ -1,6 +1,6 @@
 {
   "name": "@bedolla/enriazure",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Azure DevOps Server-only MCP with multi-collection administration and guarded CRUD.",
   "author": "Bedolla",
   "license": "AGPL-3.0-or-later",
